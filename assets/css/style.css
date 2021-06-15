@@ -1,0 +1,19 @@
+.container{
+  height: 100%;
+}
+.items{
+  background-color: red;
+  width: 100%;
+}
+.recipeCollection{
+  background-color: blue;
+  width: 100%;
+}
+body{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr;
+}
