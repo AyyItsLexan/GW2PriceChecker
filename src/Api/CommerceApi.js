@@ -12,7 +12,6 @@ class CommerceApi extends BaseApi{
 	buildURL(){
 		return this.API_URL + this.TYPE + this.itemId
 	}
-
-
 }
+
 module.exports = CommerceApi;

@@ -12,8 +12,4 @@ function createWindow () {
 
 app.whenReady().then(() => {
 	createWindow();
-	let testApi = new CommerceApi(200);
-	testApi.getData().then(response => {
-		console.log(response.id);
-	});
 });

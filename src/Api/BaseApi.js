@@ -4,20 +4,23 @@ class BaseApi{
 
 	API_URL = "https://api.guildwars2.com/v2/";
 
-	async getData(){
+	getData(){
 		return new Promise((resolve, reject) => {
 			https.get(this.buildURL(), (resp) => {
 				let data = '';
-	
-				// A chunk of data has been recieved.
+
 				resp.on('data', (chunk) => {
 					data += chunk;
 				});
-	
-				// The whole response has been received. Print out the result.
+
 				resp.on('end', () => {
 					try {
-						resolve(JSON.parse(data));
+						data = JSON.parse(data);
+						if (data.text !== 'no such id') {
+							resolve(data);
+						} else {
+							resolve(false);
+						}
 					} catch (e) {
 						reject(e.message);
 					}
@@ -26,8 +29,8 @@ class BaseApi{
 			}).on("error", (err) => {
 				console.log("Error. " + err.message);
 			});
-		})
+		});
 	}
-
 }
+
 module.exports = BaseApi;
