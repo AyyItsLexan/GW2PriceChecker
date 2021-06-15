@@ -4,29 +4,29 @@ class BaseApi{
 
 	API_URL = "https://api.guildwars2.com/v2/";
 
-	getData(){
-		https.get(this.buildURL(),(resp) => {
-			let data = '';
+	async getData(){
+		return new Promise((resolve, reject) => {
+			https.get(this.buildURL(), (resp) => {
+				let data = '';
+	
+				// A chunk of data has been recieved.
+				resp.on('data', (chunk) => {
+					data += chunk;
+				});
+	
+				// The whole response has been received. Print out the result.
+				resp.on('end', () => {
+					try {
+						resolve(JSON.parse(data));
+					} catch (e) {
+						reject(e.message);
+					}
+				});
 
-			// A chunk of data has been recieved.
-			resp.on('data', (chunk) => {
-				data += chunk;
+			}).on("error", (err) => {
+				console.log("Error. " + err.message);
 			});
-
-			// The whole response has been received. Print out the result.
-			resp.on('end', () => {
-				console.log(JSON.parse(data));
-				console.log(JSON.parse(data).buys.quantity);
-				console.log(JSON.parse(data).buys.unit_price);
-				console.log(JSON.parse(data).sells.quantity);
-				console.log(JSON.parse(data).sells.unit_price);
-			});
-
-
-
-		}).on("error", (err) => {
-			console.log("Error. " + err.message);
-		});
+		})
 	}
 
 }
