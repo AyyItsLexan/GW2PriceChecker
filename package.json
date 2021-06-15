@@ -7,6 +7,9 @@
     "start": "electron .",
     "test": "ava"
   },
+  "ava": {
+	  "files": ["./tests/*/*.js"]
+  },
   "author": "Alel und Gomle",
   "license": "ISC",
   "devDependencies": {
