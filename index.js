@@ -1,14 +1,17 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
+const CommerceApi = require("./src/Api/CommerceApi.js");
 
 function createWindow () {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600
-  })
+	const win = new BrowserWindow({
+		width: 800,
+		height: 600,
+	});
 
-  win.loadFile('index.html')
+	win.loadFile('src/View/index.html');
 }
 
 app.whenReady().then(() => {
-  createWindow()
-})
+	createWindow();
+	let testApi = new CommerceApi(200);
+	testApi.getData();
+});
