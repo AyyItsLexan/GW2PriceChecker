@@ -16,11 +16,7 @@ class BaseApi{
 				resp.on('end', () => {
 					try {
 						data = JSON.parse(data);
-						if (data.text !== 'no such id') {
-							resolve(data);
-						} else {
-							resolve(false);
-						}
+						resolve(data);
 					} catch (e) {
 						reject(e.message);
 					}
