@@ -1,7 +1,7 @@
 const ItemsApi = require('../Api/ItemApi.js');
 const BaseModel = require('./BaseModel.js');
 
-class PricesModel extends BaseModel {
+class PriceModel extends BaseModel {
 	constructor(priceObject) {
 		super();
 		this.id = priceObject.id;
@@ -19,4 +19,4 @@ class PricesModel extends BaseModel {
 	}
 }
 
-module.exports = PricesModel;
+module.exports = PriceModel;

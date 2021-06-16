@@ -1,4 +1,4 @@
-const PricesModel = require("../Model/PriceModel.js");
+const PriceModel = require("../Model/PriceModel.js");
 const BaseApi = require("./BaseApi.js");
 
 class CommerceApi extends BaseApi{
@@ -15,7 +15,7 @@ class CommerceApi extends BaseApi{
 			if (data.text === 'no such id') {
 				return false;
 			}
-			data = new PricesModel(data);
+			data = new PriceModel(data);
 			return data;
 		});
 	}
