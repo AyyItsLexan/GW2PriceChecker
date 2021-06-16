@@ -8,7 +8,7 @@ class ItemsApi extends BaseApi{
 	LOCALE_QUERY = "lang=";
 	QUERY_SEPARATOR = "&";
 
-	constructor(itemId, locale = "de"){
+	constructor(itemId, locale = "en"){
 		super();
 		this.itemId = itemId;
 		this.locale = locale;

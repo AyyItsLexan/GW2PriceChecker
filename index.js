@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const CommerceApi = require("./src/Api/CommerceApi.js");
 const ItemApi = require("./src/Api/ItemApi.js");
+const RecipeApi = require("./src/Api/RecipeApi.js");
 
 function createWindow () {
 	const win = new BrowserWindow({
@@ -16,7 +17,8 @@ function createWindow () {
 
 app.whenReady().then(() => {
 	createWindow();
-	new ItemApi(30689).getData().then(data => {
+	new RecipeApi(200).getData().then(data => {
 		console.log(data)
 	});
+
 });

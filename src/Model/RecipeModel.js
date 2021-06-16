@@ -1,4 +1,5 @@
 const BaseModel = require('./BaseModel.js');
+const ItemApi = require('../Api/ItemApi.js');
 
 class RecipeModel extends BaseModel {
 	static PINNED_RECIPES = [];
@@ -6,6 +7,14 @@ class RecipeModel extends BaseModel {
 	constructor(recipeObject) {
 		super();
 		this.id = recipeObject.id;
+		this.outputItemId = recipeObject.output_item_id;
+		new ItemApi(recipeObject.output_item_id).getData().then(data => {
+			this.outputItem = data;
+		});
+		this.outputItemCount = recipeObject.output_item_count;
+		this.disciplines = recipeObject.disciplines;
+		this.ingredients = recipeObject.ingredients;
+
 	}
 
 	static pinRecipe(...recipe) {
